@@ -32,6 +32,6 @@ const router = createBrowserRouter(
 
     </>
   ),
-  { basename: "/checklist-plus" } 
+  { basename: "/checklist-v2" } 
 );
 export default router;
