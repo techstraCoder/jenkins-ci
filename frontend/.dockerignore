@@ -1,0 +1,8 @@
+node_modules
+npm-debug.log
+Dockerfile
+.git
+*.md
+*.log
+# git mysql data
+/mysql_data 
