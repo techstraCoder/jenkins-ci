@@ -19,10 +19,10 @@ pipeline {
                         sh "npm install"
                         sh "npm run build"
                     }
-                   sh 'mkdir -p checklist-data/html'
-                   sh 'ls -la checklist-data' 
-                   sh 'cp -r ./frontend/build/* checklist-data/html'
-                   sh 'chown -R 1000:1000 checklist-data/html' 
+                   sh 'mkdir -p usr/share/nginx/html/checklistv2'
+                   sh 'ls -la usr/share/nginx/html/checklistv2' 
+                   sh 'cp -r ./frontend/build/* usr/share/nginx/html/checklistv2'
+                   sh 'chown -R 1000:1000 usr/share/nginx/html/checklistv2' 
                 }
             }
         } 
