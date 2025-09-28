@@ -10,7 +10,8 @@ services:
       - checklistplusv2-php
       - checklistplus-mysql
      networks:
-      - my-checklist-plus-network  
+      - my-checklist-plus-network
+      - jenkins-overlay
      deploy:
       replicas: 1
       restart_policy:
@@ -23,6 +24,7 @@ services:
         - MYSQL_ROOT_HOST=%
       networks:
         - my-checklist-plus-network
+        - jenkins-overlay
       restart: always
       ports:
        - 3309:3306
@@ -37,6 +39,7 @@ services:
        image: 192.168.0.103:5000/checklistplusv2-php:v2
        networks:
         - my-checklist-plus-network
+        - jenkins-overlay
        ports:
         - 3010:9000
        restart: always 
@@ -53,3 +56,5 @@ networks:
   my-checklist-plus-network:
     driver: overlay
     attachable: true
+ jenkins-overlay:
+    external: true     
