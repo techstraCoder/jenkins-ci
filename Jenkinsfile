@@ -21,10 +21,11 @@ pipeline {
                     }
                    sh 'echo "readlink for /workspace/docker-compose:"' 
                    sh 'readlink -f /workspace/docker-compose' 
-                   sh 'cp -r ./frontend/build/* /workspace/docker-compose/checklist-data/html'
-                   sh 'chown -R 1000:1000 /workspace/docker-compose/checklist-data/html' 
-                   sh 'ls -la /mnt/c/Users/BenCoder/Desktop/workspace/docker-compose/checklist-data'
-                  
+                   sh 'cp -r ./frontend/build/* /usr/share/nginx/html/checklistplusv2'
+                   sh 'chown -R 1000:1000 /usr/share/nginx/html/checklistplusv2' 
+                   sh 'ls -la /usr/share/nginx/html/checklistplusv2'
+                   sh 'echo "Mounts:"'
+                  sh 'mount | grep html || true'
                 }
             }
         } 
