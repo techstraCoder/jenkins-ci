@@ -5,7 +5,7 @@ services:
      ports:
       - "3007:80"
      volumes:
-      - ./checklist-data/html:/usr/share/nginx/html/checklistplusv2
+      - ./checklist-data/html:/usr/share/nginx/html
      depends_on:
       - checklistplusv2-php
       - checklistplus-mysql
