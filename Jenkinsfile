@@ -19,10 +19,10 @@ pipeline {
                         sh "npm install"
                         sh "npm run build"
                     }
-                   sh 'mkdir -p /usr/share/nginx/html/checklistplusv2'
-                   sh 'ls -la /usr/share/nginx/html/checklistplusv2' 
-                   sh 'cp -r ./frontend/build/* /usr/share/nginx/html/checklistplusv2'
-                   sh 'chown -R 1000:1000 /usr/share/nginx/html/checklistplusv2' 
+                   sh 'mkdir -p /workspace/docker-compose'
+                   sh 'ls -la /workspace/docker-compose' 
+                   sh 'cp -r ./frontend/build/* /workspace/docker-compose/checklist-data/html'
+                   sh 'chown -R 1000:1000 /workspace/docker-compose/checklist-data/html' 
                 }
             }
         } 
