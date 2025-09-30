@@ -19,7 +19,7 @@ pipeline {
                         sh "npm install"
                         sh "npm run build"
                     }
-                   
+                   sh 'mkdir -p /workspace/docker-compose/checklist-data/html/checklistplusv2'
                    sh 'cp -r ./frontend/build/* /workspace/docker-compose/checklist-data/html/checklistplusv2'
                    sh 'chown -R 1000:1000 /workspace/docker-compose/checklist-data/html/checklistplusv2' 
                    sh 'echo "readlink for /workspace/docker-compose:"' 
