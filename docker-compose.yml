@@ -1,11 +1,11 @@
 version: '3.8'
 services:
   checklistplus-app:
-     image: 192.168.0.103:5000/checklistplusv2-app:v2
+     image: 172.31.160.1:5000/checklistreact-app:v2
      ports:
       - "3007:80"
      volumes:
-      - ./checklist-data/html:/usr/share/nginx/html
+      - /usr/local/share/workspace/docker_compose/nginx_data:/usr/share/nginx/html/checklistplusv2
      depends_on:
       - checklistplusv2-php
       - checklistplus-mysql
@@ -17,7 +17,7 @@ services:
       restart_policy:
         condition: on-failure 
   checklistplus-mysql:
-      image: 192.168.0.103:5000/checklistplusv2-mysql:v2
+      image: 172.31.160.1:5000/checklistreact-mysql:v2
       environment:
         - MYSQL_ROOT_PASSWORD=db
         - MYSQL_DATABASE=checklistplusv2
@@ -36,7 +36,7 @@ services:
         restart_policy:
           condition: on-failure   
   checklistplusv2-php:
-       image: 192.168.0.103:5000/checklistplusv2-php:v2
+       image: 172.31.160.1:5000/checklistreact-php:v2
        networks:
         - my-checklist-plus-network
         - jenkins-overlay
@@ -44,7 +44,7 @@ services:
         - 3010:9000
        restart: always 
        volumes:
-        - ./backend:/var/www/html/checklistv2/api
+        - /usr/local/share/workspace/docker_compose/nginx_data/html/api:/var/www/html/checklistv2/api
        depends_on:
         - checklistplus-mysql
        deploy:
@@ -56,5 +56,5 @@ networks:
   my-checklist-plus-network:
     driver: overlay
     attachable: true
- jenkins-overlay:
+  jenkins-overlay:
     external: true     
